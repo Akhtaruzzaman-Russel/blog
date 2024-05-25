@@ -3,6 +3,10 @@
 require_once "header.php";
 require_once "./classes/signup.php";
 
+if (isset($_SESSION['email'])) {
+    header("location: ./");
+}
+
 use classes\signup\signup as signup;
 
 $signup = new signup();

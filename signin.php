@@ -4,6 +4,10 @@ require_once "header.php";
 
 $conn = mysqli_connect("localhost", "root", "", "asifsirblog");
 
+if (isset($_SESSION['email'])) {
+    header("location: ./");
+}
+
 
 if (isset($_POST['name123'])) {
     $uremail = $_POST['uremail'];
@@ -14,6 +18,10 @@ if (isset($_POST['name123'])) {
     if ($checkEmail->num_rows > 0) {
         $row = $checkEmail->fetch_object();
         if (password_verify($password, $row->password)) {
+            $_SESSION['email'] = $uremail;
+            $_SESSION['name'] = $row->name;
+            $_SESSION['img'] = $row->img;
+
 
             echo "<script>toastr.success('Login successful');setTimeout(()=> location.href='index.php', 2000)</script>";
         } else {
