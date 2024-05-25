@@ -2,15 +2,26 @@
 <?php
 require_once "header.php";
 
-$conn = mysql_connect("localhost", "root", "", "asifsirblog");
+$conn = mysqli_connect("localhost", "root", "", "asifsirblog");
 
 
 if (isset($_POST['name123'])) {
     $uremail = $_POST['uremail'];
-    $upassword = $_POST['upassword'];
-    $sql = "SELECT * FROM users WHERE email='$uremail' AND password='$upassword'";
-    $conn->query($sql);
+    $password = $_POST['urpassword'];
+    $sql = "SELECT * FROM users WHERE email='$uremail'";
+	
+    $checkEmail = $conn->query($sql);
+    if ($checkEmail->num_rows > 0) {
+        $row = $checkEmail->fetch_object();
+        if (password_verify($password, $row->password)) {
+
+            echo "<script>toastr.success('Login successful');setTimeout(()=> location.href='index.php', 2000)</script>";
+        } else {
+            echo " <script> toastr.error('Invalid Password'); setTimeout(()=> location.href='signin.php' , 2000) </script>";
+        }
+    }
 }
+
 
 ?>
 
@@ -26,10 +37,10 @@ if (isset($_POST['name123'])) {
                         <form action="" method="post">
         
                             <div class="mb-3">
-                                <input type="text" placeholder="Your Email" class="form-control" name="uremail">
+                                <input type="email" name="uremail" class="form-control" placeholder="Your Email" required>
                             </div>
                             <div class="mb-3">
-                                <input type="text" placeholder="Your Password" class="form-control" name="upassword">
+                                <input type="password" name="urpassword" class="form-control" placeholder="Your Password" required>
                             </div>
 
                             <div>
