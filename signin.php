@@ -2,14 +2,14 @@
 <?php
 require_once "header.php";
 
-$conn = mysqli_connect("localhost", "root", "", "asifsirblog");
+
 
 if (isset($_SESSION['email'])) {
     header("location: ./");
 }
 
 
-if (isset($_POST['name123'])) {
+if (isset($_POST['name123'])) { 
     $uremail = $_POST['uremail'];
     $password = $_POST['urpassword'];
     $sql = "SELECT * FROM users WHERE email='$uremail'";

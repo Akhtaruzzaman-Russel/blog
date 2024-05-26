@@ -1,5 +1,7 @@
 <?php
 
+$conn = mysqli_connect("localhost", "root", "", "asifsirblog");
+
   session_start();
 
 ?>
