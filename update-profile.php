@@ -31,7 +31,7 @@ if (isset($_POST['upProfile'])) {
             <div class="col-md-12">
                 <h1>Update Profile </h1>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 mx-auto mt-5 border rounded shadow p-4">
                         <form action="" method="post">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>

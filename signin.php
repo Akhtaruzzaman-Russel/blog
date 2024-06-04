@@ -21,7 +21,7 @@ if (isset($_POST['name123'])) {
             $_SESSION['email'] = $uremail;
             $_SESSION['name'] = $row->name;
             $_SESSION['img'] = $row->img;
-
+            $_SESSION['role'] = $row->role;
 
             echo "<script>toastr.success('Login successful');setTimeout(()=> location.href='index.php', 2000)</script>";
         } else {
