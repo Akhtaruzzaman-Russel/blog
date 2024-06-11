@@ -13,6 +13,7 @@ if (isset($_POST['addCat'])) {
     $catname = $_POST['catname'];
     $token = $_POST['token'];
     $checkToken = $conn->query("SELECT * FROM `token` WHERE `name`='$token'");
+    
     if ($checkToken->num_rows > 0) {
         echo "<script>toastr.error('Category Already Added')</script>";
     } else {
@@ -34,6 +35,8 @@ if (isset($_POST['deleteCat'])) {
     echo "<script>toastr.success('Category Deleted'); setTimeout(()=> location.href='category.php',2000)</script>";
 }
 ?>
+
+
 <div class="container-fluid">
     <div class="row d-flex position-fixed w-100">
         <div style="width: 200px;" class="min-vh-100 bg-dark col-1">
@@ -88,6 +91,7 @@ if (isset($_POST['deleteCat'])) {
             <?php } ?>
 
             <?php if (isset($_GET['eid'])) { ?>
+
                 <div class="row">
                     <div class="col-md-6">
                         <h1>Edit Category</h1>
